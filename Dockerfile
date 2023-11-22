@@ -34,8 +34,14 @@ RUN apk add --no-cache bash
 RUN apk --no-cache add dos2unix
 
 # Converter scripts para formato Unix/Linux
-RUN find /scripts -type f -exec dos2unix {} \;
-RUN find /djangoapp -type f -exec dos2unix {} \;
+# RUN find /scripts -type f -exec dos2unix {} \;
+# RUN find /djangoapp -type f -exec dos2unix {} \;
+
+RUN find /scripts -exec dos2unix {} \;
+
+RUN find /djangoapp -exec dos2unix {} \;
+
+
 ENV PATH="/scripts:/venv/bin:$PATH"
 
 #CMD ["sh", "-c", "tail -f /dev/null"]
