@@ -25,17 +25,19 @@ RUN python -m venv /venv && \
   chown -R duser:duser /data/web/media && \
   chmod -R 755 /data/web/static && \
   chmod -R 755 /data/web/media && \
-  chmod -R +x /scripts
+  chmod -R +x /scripts && \ 
+  chmod +x /scripts/commands.sh && \
+  chmod +x /scripts && \
+  chmod +x /scripts && \
+  apk add --no-cache bash && \
+  apk add --no-cache dos2unix
 
-RUN chmod +x /scripts/commands.sh
 
-RUN chmod +x /scripts
-RUN apk add --no-cache bash
-RUN apk --no-cache add dos2unix
+
 
 # Converter scripts para formato Unix/Linux
-# RUN find /scripts -type f -exec dos2unix {} \;
-# RUN find /djangoapp -type f -exec dos2unix {} \;
+RUN find /scripts -type f -exec dos2unix {} \;
+RUN find /djangoapp -type f -exec dos2unix {} \;
 
 RUN find /scripts -exec dos2unix {} \;
 
@@ -44,21 +46,10 @@ RUN find /djangoapp -exec dos2unix {} \;
 
 ENV PATH="/scripts:/venv/bin:$PATH"
 
+
+
 #CMD ["sh", "-c", "tail -f /dev/null"]
 
 #CMD ["ash", "-c", "ls -la /scripts && ls -la /djangoapp && pwd && /scripts/commands.sh"]
 
 CMD ["sh", "-c", "ls -la /scripts && ls -la /djangoapp && pwd && /scripts/commands.sh"]
-
-# # Adicionando o script diretamente ao Dockerfile
-# RUN /bin/sh -c ' \
-#     set -e; \
-#     while ! nc -z $POSTGRES_HOST $POSTGRES_PORT; do \
-#         echo "🟡 Waiting for Postgres Database Startup ($POSTGRES_HOST $POSTGRES_PORT) ..."; \
-#         sleep 2; \
-#     done; \
-#     echo "✅ Postgres Database Started Successfully ($POSTGRES_HOST:$POSTGRES_PORT)"; \
-#     python manage.py collectstatic; \
-#     python manage.py migrate; \
-#     python manage.py runserver \
-# '
