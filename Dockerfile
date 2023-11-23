@@ -1,4 +1,4 @@
-FROM python:3.11.3-alpine3.18
+FROM python:3.11.6-alpine3.18
 
 LABEL maintainer="joelsepulveda02@outlook.com"
 
@@ -13,7 +13,6 @@ WORKDIR /djangoapp
 EXPOSE 8000
 
 
-
 RUN python -m venv /venv && \
   /venv/bin/pip install --upgrade pip && \
   /venv/bin/pip install -r /djangoapp/requirements.txt && \
@@ -25,15 +24,13 @@ RUN python -m venv /venv && \
   chown -R duser:duser /data/web/media && \
   chmod -R 755 /data/web/static && \
   chmod -R 755 /data/web/media && \
-  chmod -R +x /scripts && \ 
-  chmod +x /scripts/commands.sh && \
-  chmod +x /scripts && \
-  chmod +x /scripts && \
-  apk add --no-cache bash && \
-  apk add --no-cache dos2unix
+  chmod -R +x /scripts
 
 
 
+RUN apk add bash dos2unix
+RUN apk add bash
+RUN apk add dos2unix
 
 # Converter scripts para formato Unix/Linux
 RUN find /scripts -type f -exec dos2unix {} \;
@@ -43,6 +40,9 @@ RUN find /scripts -exec dos2unix {} \;
 
 RUN find /djangoapp -exec dos2unix {} \;
 
+RUN chmod +x /scripts/commands.sh
+
+RUN chmod +x /scripts
 
 ENV PATH="/scripts:/venv/bin:$PATH"
 
