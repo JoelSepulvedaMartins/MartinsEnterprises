@@ -53,3 +53,5 @@ ENV PATH="/scripts:/venv/bin:$PATH"
 #CMD ["ash", "-c", "ls -la /scripts && ls -la /djangoapp && pwd && /scripts/commands.sh"]
 
 CMD ["sh", "-c", "ls -la /scripts && ls -la /djangoapp && pwd && /scripts/commands.sh"]
+# Muda o usuário para duser
+#USER duser

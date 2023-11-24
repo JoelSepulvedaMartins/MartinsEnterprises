@@ -2,8 +2,8 @@
 
 # O shell irá encerrar a execução do script quando um comando falhar
 set -e
-apk add --no-cache bash
-apk --no-cache add dos2unix
+# apk add --no-cache bash
+# apk --no-cache add dos2unix
 while ! nc -z $POSTGRES_HOST $POSTGRES_PORT; do
   echo "🟡 Waiting for Postgres Database Startup ($POSTGRES_HOST $POSTGRES_PORT) ..."
   sleep 2

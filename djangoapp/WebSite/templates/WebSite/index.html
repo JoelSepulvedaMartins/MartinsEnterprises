@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo à Minha Empresa</title>
+    <!-- Adicionando Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,6 +41,48 @@
 </head>
 
 <body>
+    <!-- Barra de navegação Bootstrap -->
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h5 class="text-white h4">Oferecimentos Jhoel</h5>
+            <span class="text-muted">O que se que ta mole</span>
+            <div class="spinner-grow text-success spinner-grow-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger spinner-grow-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning spinner-grow-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark ">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="nossos_servicos">Nossos Servicos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="servicosAdmin">Area Admin</a>
+                </li>
+            </ul>
+
+
+        </div>
+
+    </nav>
+
+
+
+
+
     <header>
         <h1>Bem-vindo à Martins Company</h1>
     </header>
@@ -55,6 +100,85 @@
     <footer>
         &copy; 2023 Martins Enterprises. Todos os direitos reservados.
     </footer>
+
+
+    <!-- Colocando notificaçoes -->
+
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+        <!-- Position it: -->
+        <!-- - `.toast-container` for spacing between toasts -->
+        <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+        <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+        <div class="toast-container position-absolute top-0 end-0 p-3">
+
+            <!-- Then put toasts within -->
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img  src="https://comicvine.gamespot.com/a/uploads/original/11131/111315773/8883237-8045386711-71834.jpg" class="rounded me-2" alt="..." width="30" height="48">
+                    <strong class="me-auto">Charles </strong>
+                    <small class="text-muted">Tuo secondings atrix</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    !!NOSSA, OLHA OQ APARECEU NO MEU CELULAR!!
+                </div>
+            </div>
+
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img   src="https://comicvine.gamespot.com/a/uploads/original/11131/111315773/8883237-8045386711-71834.jpg" class="rounded me-2" alt="..." width="30" height="48">
+                    <strong class="me-auto">Jhoel Lo Picudo</strong>
+                    <small class="text-muted">Bao?</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Se leu é por que me mamou, tmj.
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--Scripts-->
+
+
+<!-- Adicionando Bootstrap JS (coloque no final do corpo para um carregamento mais rápido) -->
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+<!-- TENTAR USAR O OFFCANVA COM ESSE JAVASCRIPT<script defer src="https://code.jquery.com/jquery-3.6.4.min.js"></script>-->
+<!--  inicialização do Offcanvas -->
+<script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+        var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
+        var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
+            return new bootstrap.Offcanvas(offcanvasEl)
+        })
+    });
+</script>
+
+ <!-- Script para aguardar 5 segundos e, em seguida, mostrar os toasts -->
+ <script>
+    // Função para mostrar toasts após 5 segundos
+    function mostrarToasts() {
+        // Seletor dos toasts
+        var toasts = document.querySelectorAll('.toast');
+
+        // Mostrar cada toast individualmente
+        toasts.forEach(function (toast, index) {
+            // Aguardar 5 segundos antes de mostrar cada toast
+            setTimeout(function () {
+                var bootstrapToast = new bootstrap.Toast(toast);
+                bootstrapToast.show();
+            }, 5000 * (index + 1));
+        });
+    }
+
+    // Chamar a função após 5 segundos
+    setTimeout(mostrarToasts, 2000);
+</script>
+
+
 </body>
+
 
 </html>
