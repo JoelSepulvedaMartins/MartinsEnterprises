@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Serviço</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Editar Serviço</h2>
+    <form  method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome do Serviço:</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ service.name }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email do Serviço:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ service.email }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone do Serviço:</label>
+            <input type="tel" class="form-control" id="telefone" name="telefone" value="{{ service.telephone }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="mensagem" class="form-label">Mensagem do Serviço:</label>
+            <textarea class="form-control" id="mensagem" name="mensagem" rows="3" required>{{ service.message }}</textarea>
+        </div>
+       
+        <a href="/serviceDelete/{{ service.id }}" class="btn btn-danger">Exluir</a>
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS e Popper.js (opcional, se necessário para alguns componentes do Bootstrap) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
