@@ -14,8 +14,6 @@ services:
       - ./scripts:/scripts
     env_file:
       - ./dotenv_files/.env
-    environment:
-      - ALLOWED_HOSTS=*  
     depends_on:
       - psql
     
