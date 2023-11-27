@@ -29,32 +29,33 @@ def nossos_servicos(request):
             {'STATUS': status} ## Enviando variavel status para o html
             )
     elif request.method == 'POST':
-        return formSendDb(request)
+        #Variaveis response form post
+        type_service = request.POST.get('type_service')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        telephone = request.POST.get('telephone')
+        stat = request.POST.get('status')
+        print(stat)
+        #Criando uma instancia da model que ira se comunicar com o banco de dados
+        service = Services(
+            name = name,
+            email = email,
+            message = message,
+            telephone = telephone,
+            #date_created = datetime.now(), o DateTimeField(auto_now_add=True)
+
+        )
+
+    #salvar a model em memoria no banco de dados
+        service.save()
+    return redirect("/nossos_servicos?status=1")
 
 
 # TODO Rename this here and in `nossos_servicos`
-def formSendDb(request):
+# def formSendDb(request):
     
-    #Variaveis response form post
-    type_service = request.POST.get('type_service')
-    name = request.POST.get('name')
-    email = request.POST.get('email')
-    message = request.POST.get('message')
-    telephone = request.POST.get('telephone')
-    stat = request.POST.get('status')
-    print(stat)
-    #Criando uma instancia da model que ira se comunicar com o banco de dados
-    service = Services(
-        name = name,
-        email = email,
-        message = message,
-        telephone = telephone,
-        #date_created = datetime.now(), o DateTimeField(auto_now_add=True)
 
-    )
-
-    #salvar a model em memoria no bancod e dados
-    service.save()
 
 
     #colocando "?" depois do path vc consegue adicionar parametros
@@ -87,7 +88,7 @@ def formSendDb(request):
     #     return redirect("/nossos_servicos?status=1")
 
 
-    return redirect("/nossos_servicos?status=1")
+    
 
 
 

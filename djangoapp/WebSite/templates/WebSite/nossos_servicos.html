@@ -138,7 +138,7 @@
         {% endif %}
 
         <!-- Formulário de Solicitação de Serviços -->
-        <form class="form-floating" action="/nossos_servicos" method="POST">
+        <form class="form-floating" action="{% url 'WebSite:nossos_servicos' %}" method="POST">
             {% csrf_token %}
             <div class="mb-3">
                 <label for="tipo-servico" class="form-label">Tipo de serviço</label>
