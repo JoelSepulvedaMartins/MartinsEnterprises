@@ -118,20 +118,28 @@ USE_I18N = True
 
 USE_TZ = True
 
+# configurações estáticas e de mídia
+# Static files (CSS, JavaScript, Images)
+
+
+
+DATA_DIR = BASE_DIR.parent / 'data' / 'web'
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATIC_URL = '/static/'
-# /data/web/static
 STATIC_ROOT = DATA_DIR / 'static'
 
-MEDIA_URL = '/media/'
-# /data/web/media
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Media files (uploaded by users)
+
 MEDIA_ROOT = DATA_DIR / 'media'
+MEDIA_URL = '/media/'
 
 
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

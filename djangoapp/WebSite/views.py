@@ -10,6 +10,7 @@ from faker import Faker
 
 seedNumber = 10
 
+
 # Create your views here.
 def  index(request):
     return render(
@@ -17,17 +18,87 @@ def  index(request):
         'WebSite/index.html'
     )
 
+#Views do site principal clientes
+def aboutClient(request):
+    return render(
+        request,
+        'WebSite/about.html'
+    )
+def booking(request):
+    return render(
+        request,
+        'WebSite/booking.html'
+    )
+def contact(request):
+    return render(
+        request,
+        'WebSite/contact.html'
+    )
+def service(request):
+    return render(
+        request,
+        'WebSite/service.html'
+    )
+def error404(request):
+    return render(
+        request,
+        'WebSite/error404.html'
+    )
+def service(request):
+    return render(
+        request,
+        'WebSite/service.html'
+    )
+def team(request):
+    return render(
+        request,
+        'WebSite/team.html'
+    )
+def testimonial(request):
+    return render(
+        request,
+        'WebSite/testimonial.html'
+    )
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############VIEW DO SITE TESTE
 # View e function da pagina de serevicos
 def nossos_servicos(request):
     if request.method == 'GET':  
-        status = request.GET.get('status')
-        print(status)
+        # status = request.GET.get('status')
+        # print(status)
 
+        # return render(
+        #     request,
+        #     'WebSite/nossos_servicos.html',
+        #     {'STATUS': status} ## Enviando variavel status para o html
+        #     )
         return render(
-            request,
-            'WebSite/nossos_servicos.html',
-            {'STATUS': status} ## Enviando variavel status para o html
-            )
+        request,
+        'WebSite/nossos_servicos.html',
+    )
     elif request.method == 'POST':
         #Variaveis response form post
         type_service = request.POST.get('type_service')
